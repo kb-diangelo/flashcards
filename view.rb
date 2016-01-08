@@ -5,13 +5,17 @@ class View
     puts ""
   end
 
+  def get_file
+    ARGV
+  end
+
   def display(output)
     puts output
   end
 
   def input
     puts "Enter your answer..."
-    gets.chomp
+    $stdin.gets.chomp
   end
 
   def wrong_guess
