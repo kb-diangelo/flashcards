@@ -1,6 +1,8 @@
 require_relative '../parseable.rb'
+require_relative '../flashcard_deck.rb'
 
 describe 'the Parseable module' do
+  let(:test_deck) {Deck.new('text_for_spec_tests.txt')}
 
   describe 'the parse_cards_from_file method' do
 
