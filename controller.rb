@@ -5,7 +5,7 @@ class Controller
 
   def initialize
     @view = View.new
-    @flashcard_deck = FlashCardDeck.new('short.txt')
+    @flashcard_deck = FlashCardDeck.new(@view.get_file[0])
     @current_card = @flashcard_deck.select_card
     run_interface
   end
@@ -40,5 +40,3 @@ class Controller
   end
 
 end
-
-Controller.new
