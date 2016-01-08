@@ -5,7 +5,7 @@ class Controller
 
   def initialize
     @view = View.new
-    @flashcard_deck = FlashCardDeck.new('sample_cards.txt')
+    @flashcard_deck = FlashCardDeck.new('short.txt')
     @current_card = @flashcard_deck.select_card
     run_interface
   end
@@ -13,18 +13,30 @@ class Controller
   def run_interface
     @view.intro
     @view.display(@current_card.definition)
-    until (input = @view.input) == "exit" || @flashcard_deck.empty?
+
+    until @flashcard_deck.empty? || (input = @view.input) == "exit"
+
       if input != @current_card.term
-        @view.wrong_guess
+        @current_card.attempt
+        attempts = @current_card.attempts
+        @view.wrong_guess(attempts)
       else
+        @flashcard_deck.remove_card(@current_card)
         @view.right_guess
-        unless @flashcard_deck.empty?
-          @current_card = @flashcard_deck.select_card
-          @view.display(@current_card.definition)
-        end
       end
+
+      next_card
     end
+
     @view.goodbye
+  end
+
+  def next_card
+    unless @flashcard_deck.empty?
+      @view.next_question
+      @current_card = @flashcard_deck.select_card
+      @view.display(@current_card.definition)
+    end
   end
 
 end
