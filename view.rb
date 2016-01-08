@@ -14,14 +14,18 @@ class View
     gets.chomp
   end
 
-  def wrong_guess
-    puts "That is incorrect, please try again."
+  def wrong_guess(attempts)
+    puts "That is incorrect, please try again. Attempts: #{attempts}"
     puts ""
   end
 
   def right_guess
-    puts "Correct! Next question..."
+    puts "Correct!"
     puts ""
+  end
+
+  def next_question
+    puts "Next question..."
   end
 
   def goodbye

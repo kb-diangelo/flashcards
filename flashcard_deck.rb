@@ -14,7 +14,6 @@ class FlashCardDeck
 
   def select_card
     @selected_card = @deck.sample
-    self.remove_card(@selected_card)
   end
 
   def remove_card(card)

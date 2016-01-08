@@ -1,13 +1,15 @@
 class Card
 
-  attr_reader :term, :definition
-
-  # attr_accessor :guesses, :fail
+  attr_reader :term, :definition, :attempts
 
   def initialize(args = {})
     @term = args.fetch(:term, nil)
     @definition = args.fetch(:definition, nil)
-    # @guesses = 0
-    # @fail
+    @attempts = 0
   end
+
+  def attempt
+    @attempts += 1
+  end
+
 end
